@@ -1,0 +1,30 @@
+.myGrid {
+    width: 500px;
+    height: auto;
+    }
+
+.divback {
+    background : #eee;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.wfunc {
+	color : red;
+    background-color:lightgreen;
+}
+
+.winfunc {
+    background-color:lightgrey;
+}
+
+.ui-splitbar {
+  background-color: black;
+}
+
+.newtid {
+    color : orange
+}
+

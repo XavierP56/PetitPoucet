@@ -1,0 +1,67 @@
+<!doctype html>
+<html ng-app="petitpoucet">
+<head>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
+
+<script type="text/javascript" src="bower_components/ace-builds/src-min-noconflict/ace.js"></script>
+<script type="text/javascript" src="bower_components/angular-ui-ace/ui-ace.js"></script>
+
+<script src="petitpoucet.js"></script>
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="ui-grid/ui-grid-unstable.js"></script>
+
+<link rel="stylesheet" type="text/css" href="bower_components/angular-ui-layout/ui-layout.css"/>
+<script type="text/javascript" src="bower_components/raf/index.js"></script>
+<script type="text/javascript" src="bower_components/angular-ui-layout/ui-layout.js"></script>
+
+<link rel="styleSheet" href="ui-grid/ui-grid-unstable.css" />
+<link rel="styleSheet" href="petitpoucet.css" />
+
+</head>
+<body >
+    <div ng-controller="TraceCtrl">
+        <div ui-layout= {flow:"column"} class="divback">
+            <div ui-layout-container size="0px">
+                <b>List of files</b><br/>
+                <input type="text" ng-model="search.src">
+                <div ng-repeat='f in files | filter:search'>
+                    <input type='checkbox' ng-model='f.filtered'></input>
+                    {{f.src}}
+                </div>
+                <br/>
+                <button ng-click="filesToFilter()">Filter selected</button>
+            </div>
+            <div ui-layout-container>
+                <div ui-layout class="divback">
+                    <div ui-layout-container min-size="50px" max-size="50px" size="50px">
+                        List of functions
+                        <button ng-show="status == 0" ng-click="record()">Record new trace</button>
+                        <button ng-show="status == 1" ng-click="stop()">Stop recording</button>
+                        <br/><b>{{curFile}}</b>
+                    </div>
+                    <div ui-layout-container class="divback">
+                        <div ui-ace="{onLoad: aceLoaded}" style="height:100%" ng-model='myFile'></div>
+                    </div> 
+                    
+                    <div ui-layout-container class="divback">
+                        <div ng-repeat="f in funcs">
+                            <table>
+                                    <tr id="idx{{f.fnum}}" ng-class="{wfunc:$index==curIdx, winfunc:chk($index)}">
+                                        <td style="width:80px;">#{{f.fnum}}</td>
+                                        <td style="width:80px;" ng-class="{newtid: funcs[$index].tid != funcs[$index-1].tid}">{{f.tid}}</td>
+                                        <td style="width:300px;">To :  <a ng-click="displaySrc($index, f.to_src,f.to_line)">{{f.to_func}} </a></td>
+                                        <td style="width:100px;"><a ng-click="scrollTo($index)">Ends #{{f.endnum}}</a></td>
+                                        <td>From: <a ng-click="displaySrc($index, f.from_src,f.from_line)">{{f.from_func}} </a></td>
+                                    </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>        
+            </div>
+        </div>
+        <!--End Controller-->
+    </div>
+</body>
+</html>
