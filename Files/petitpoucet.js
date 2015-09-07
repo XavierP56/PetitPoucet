@@ -2,7 +2,7 @@
 (function() {
   var app;
 
-  app = angular.module('petitpoucet', ["ui.bootstrap", "ui.grid", 'ui.grid.edit', 'ngResource', 'ui.ace', 'ui.layout']);
+  app = angular.module('petitpoucet', ["ui.bootstrap", 'ngResource', 'ui.ace', 'ui.layout']);
 
   app.controller("TraceCtrl", function($scope, $resource, $timeout, $location, $anchorScroll) {
     var FilterFiles, GetRecordStatus, Refresh, SetRecordStatus, Source;

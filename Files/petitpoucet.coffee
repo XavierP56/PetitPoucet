@@ -1,4 +1,4 @@
-app = angular.module 'petitpoucet', ["ui.bootstrap", "ui.grid", 'ui.grid.edit', 'ngResource', 'ui.ace', 'ui.layout']
+app = angular.module 'petitpoucet', ["ui.bootstrap", 'ngResource', 'ui.ace', 'ui.layout']
     
 app.controller "TraceCtrl", ($scope, $resource, $timeout, $location, $anchorScroll) ->  
 
