@@ -28,6 +28,10 @@ python server.py
 
 Launch the IDE through a Browser:
 http://localhost:8080/demo/petitpoucet.html
+Record a trace
+Launch your main executable
+Stop trace
+Analyze the trace
 
 Limitation:
 - Executable location hardcoded in server.py

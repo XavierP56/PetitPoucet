@@ -35,7 +35,7 @@ def memoize(f):
 @memoize
 def addr2funcline(addr):
     global files
-    cmd = 'addr2line -p -f -e /home/xavier/Traceur/main ' + addr
+    cmd = 'addr2line -p -f -e /home/xavier/PetitPoucet/main ' + addr
     p = os.popen(cmd)
     sloc_line = p.readline()
     sloc = sloc_line.split() 
